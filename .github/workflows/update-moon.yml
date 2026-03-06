@@ -1,0 +1,31 @@
+name: Update moon
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+
+      - name: Update moon
+        run: bash scripts/update.sh
+
+      - name: Commit and tag
+        run: |
+          version=$(grep 'version = "' flake.nix | sed -E 's/.*"([^"]+)".*/\1/' | head -1)
+          git diff --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add flake.nix
+          git commit -m "Update moon to v${version}"
+          git tag "v${version}"
+          git push
+          git push --tags
