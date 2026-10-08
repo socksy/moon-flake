@@ -5,19 +5,19 @@
 
   outputs = { self, nixpkgs }:
     let
-      version = "2.6.0";
+      version = "2.6.1";
 
       binSystems = {
-        x86_64-linux = { target = "x86_64-unknown-linux-gnu"; sha256 = "sha256-pOEcR08NnBA1CpX89PDY3W7lL8My1VHuM3AbscnqcNI="; };
-        aarch64-linux = { target = "aarch64-unknown-linux-gnu"; sha256 = "sha256-80AgrabssMZfrYIrLMeBMC09qa4WX0rP71fSelnypwo="; };
-        aarch64-darwin = { target = "aarch64-apple-darwin"; sha256 = "sha256-FQmWeaM3qUHtjDnifQgSZuWVLOd9sPJK+Su7ndZLMAU="; };
+        x86_64-linux = { target = "x86_64-unknown-linux-gnu"; sha256 = "sha256-zxV877+egJbU4OIgG1bs/K+xn4xUoe0925CuXUap2pw="; };
+        aarch64-linux = { target = "aarch64-unknown-linux-gnu"; sha256 = "sha256-E+bhaASWqyJeGwM2C2Cz3zYWQX5x0lc98oeVtKZRL5E="; };
+        aarch64-darwin = { target = "aarch64-apple-darwin"; sha256 = "sha256-KSLOcCd8xvN1AQb6nr0eJe2JDsjNukVwFI/4cBpb6lM="; };
       };
 
       src = {
         owner = "moonrepo";
         repo = "moon";
         rev = "v${version}";
-        sha256 = "15smcchncy14ck9ygyklawvwmkri92vd4vwqcgdpikaynr8n430q";
+        sha256 = "0iilgfr9x2vbwv1j3qz7lifhrismrc84475kz32jfwh4m4g53sww";
       };
 
       mkMoonBin = system:
